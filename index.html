@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="script" href="script.js">
+
+    <title>ثانوية محمد بوضياف</title>
+    
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="moon-icon" id="darkModeToggle"><img src="images/6714978.png" class="school-image"></div>
+                    <h1>ثانوية محمد بوضياف</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" style="font-family: 'Amiri';">استعمال الزمن</a></li>
+                        <li><a href="#" style="font-family: 'Amiri';">موقع الثانوية</a></li>
+                        <li><a href="https://mohamedboudiaf.eclipium.xyz/student.php" style="font-family: 'Amiri';">المعدلات</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="info-section">
+            <div class="info-card">
+                <h3>حول الثانوية</h3>
+                <img src="images/image.jpg" alt="صورة الثانوية" class="school-image">
+                <p style="font-family: 'Amiri';">ثانوية محمد بوضياف هي مؤسسة تعليمية متميز . تقع في بلدية سيدي لحسن، ولاية سيدي بلعباس. تضم الثانوية أكثر من 600 طالب وطالبة، وتوفر تعليماً متميزاً في العديد من التخصصات.</p>
+                <p style="font-family: 'Amiri';">تهدف الثانوية إلى تطوير مهارات الطلاب وتنمية قدراتهم العلمية والمعرفية، وتسعى دائماً إلى تحقيق التميز الأكاديمي.</p>
+                <p style="font-family: 'Amiri';">الشعب المتوفرة:شعبة آداب وفلسفة -شعبة تسير واقتصاد--شعبة تقني رياضي-شعبة علوم تجريبية </p>
+            </div>
+            
+            <div class="info-card">
+                <h3> الاطلاع على نتائج الفصلية</h3>
+                <div class="button-container">
+                    <a href="https://mohamedboudiaf.eclipium.xyz/student.php">الانتقال الى الموقع</a>
+                </div>
+
+                
+            
+            <div class="info-card">
+                <h3>المعدلات</h3>
+                <p>معدلات الفصل الأول للسنة الدراسية 2024-2025</p>
+                <div class="grades-chart" id="gradesChart">
+                    <!-- Bars will be added by JavaScript -->
+                </div>
+                <div id="chartLabels" style="display: flex; justify-content: space-around; margin-top: 10px;"></div>
+            </div>
+        </section>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>جميع الحقوق محفوظة © 2025 - ثانوية محمد بوضياف</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+        
+        const subjects = ['رياضيات', 'فيزياء', 'عربية', 'فرنسية', 'علوم'];
+        const grades = [14.5, 13.2, 15.8, 12.7, 16.3];
+        
+        const gradesChart = document.getElementById('gradesChart');
+        const chartLabels = document.getElementById('chartLabels');
+        subjects.forEach((subject, index) => {
+            const label = document.createElement('div');
+            label.textContent = subject;
+            chartLabels.appendChild(label);
+            const bar = document.createElement('div');
+            bar.className = 'chart-bar';
+            const height = (grades[index] / 20) * 250; 
+            
+            bar.style.height = '0px';
+            bar.style.left = (index * 20) + '%';
+            const gradeText = document.createElement('div');
+            gradeText.textContent = grades[index];
+            gradeText.style.position = 'absolute';
+            gradeText.style.top = '-25px';
+            gradeText.style.width = '100%';
+            gradeText.style.textAlign = 'center';
+            
+            bar.appendChild(gradeText);
+            gradesChart.appendChild(bar);
+            
+
+            setTimeout(() => {
+                bar.style.height = height + 'px';
+            }, 100 * index);
+        });
+        
+        const timetableCells = document.querySelectorAll('.timetable td');
+        timetableCells.forEach(cell => {
+            if (cell.textContent !== '-') {
+                cell.addEventListener('mouseover', function() {
+                    this.style.backgroundColor = '#3498db';
+                    this.style.color = 'white';
+                });
+                
+                cell.addEventListener('mouseout', function() {
+                    this.style.backgroundColor = '';
+                    this.style.color = '';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
